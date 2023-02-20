@@ -1,2 +1,18 @@
-﻿// See https://aka.ms/new-console-template for more information
-Console.WriteLine("Hello, World!");
+﻿using NLog;
+
+namespace MovieLibrary
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            string path = Directory.GetCurrentDirectory() + "\\nlog.config";
+
+            Logger logger = LogManager.LoadConfiguration(path).GetCurrentClassLogger();
+
+            logger.Info("Hello from info!");
+            logger.Error("Hello from error!");
+            logger.Trace("Hello from trace!");
+        }
+    }
+}
